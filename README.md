@@ -1,17 +1,16 @@
 # Open Source ERP – OSERP
 
-A Quickbooks-inspired Django based ERP that is completely open source. 
-This app will be a [12Factor](http://12factor.net/) app that will be deployable to [Heroku](http://heroku.com) and [Deis](http://deis.io)
+A Quickbooks-inspired Django based ERP that is completely open source. This app will be a [12Factor](http://12factor.net/) app that will be easily deployable to public clouds such as [Amazon EC2](http://aws.amazon.com/ec2/) by using PaaS's such as [Heroku](http://heroku.com) and [Deis](http://deis.io).
 
 ## What is OSERP
 
-OSERP is an open source ERP that allows you to store details about your Customers and Products, enter Orders and generate Invoices for them. OSERP also allows you to generate in-depth sales reports and provides granular analytics.
+OSERP is an open source ERP that allows you to store details about your Customers and Products, enter Orders and generate Invoices for them. OSERP also allows you to generate in-depth Sales Reports and provides you with granular Analytics.
 
 ## Why use OSERP
 
 ### Save on business expenses
 
-With the rising cost of doing business today, it is a necessity for organizations large and small to avoid unnecessary expenses. OSERP is 100% and is falls under the GNU licence. That means that it is completely free to download, use and modify.
+With the rising cost of doing business today, it is a necessity for organizations large and small to avoid unnecessary expenses. OSERP is 100% free and is falls under the Apache License, Version 2.0. That means that it is completely free to download, use and modify.
 
 ### Deploy effortlessly to the cloud
 
@@ -19,7 +18,7 @@ Since OSERP is a [12Factor](http://12factor.net/) app, it is very easy to deploy
 
 ### 100% Open Source
 
-OSERP is completely open source. That means that the code is 100% transparent and customizable to your needs. It also means that the open source community, which consists of experienced Software Engineers, will be constinuously be looking to improve and solidify the product.
+OSERP is completely open source. That means that the code is 100% transparent and customizable to your needs. It also means that the open source community, which consists of experienced Software Engineers, will be continuously be looking to improve and solidify the product.
 
 ## Getting Started
 
