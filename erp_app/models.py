@@ -39,9 +39,10 @@ class Orders(models.Model):
     invoice_creation_date = models.DateTimeField('Invoice Created Date')
     delivery_due_date = models.DateTimeField('Delivery Due Date')
     payment_due_date = models.DateTimeField('Payment Due Date') 
-    custom_message = models.CharField(max_length=500)
+    custom_message = models.TextField()
 
 class Products(models.Model):
+    name = models.CharField(max_length=500) 
     description = models.CharField(max_length=500)
     price = models.DecimalField(max_digits=20, decimal_places=2)
 
