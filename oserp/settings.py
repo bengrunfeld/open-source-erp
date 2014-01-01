@@ -66,12 +66,26 @@ USE_TZ = True
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 
-# This is the only line of code Heroku will accept from now on.
-# If you want to change this code, then you have to destroy the app
-# and create a new one with `heroku create`
+# If you want to use a different line here after 
+# you've performed `heroku create`, then you need
+# to destroy the app and create a new one with `heroku create`
+# That is the only way it will sync up with the DB
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite')
 }
+
+# For future use 
+# DATABASES = {
+#     'default': {
+#         'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE', 'sqlite3'),
+#         'NAME': os.environ.get('DJ_NAME'),
+#         'USER': os.environ.get('DJ_USER'),
+#         'PASSWORD': os.environ.get('DJ_PASS'),
+#         'HOST': os.environ.get('DJ_HOST'),
+#         'PORT': os.environ.get('DJ_PORT'),
+#     }
+# }
+
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
