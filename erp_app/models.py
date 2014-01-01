@@ -35,7 +35,7 @@ class General_Settings(models.Model):
     zip_code = models.CharField(max_length=10)
 
 class Orders(models.Model):
-    cust_id = models.ForeignKey(Question)
+    cust_id = models.ForeignKey(Customers)
     invoice_creation_date = models.DateTimeField('Invoice Created Date')
     delivery_due_date = models.DateTimeField('Delivery Due Date')
     payment_due_date = models.DateTimeField('Payment Due Date') 
@@ -43,7 +43,7 @@ class Orders(models.Model):
 
 class Products(models.Model):
     description = models.CharField(max_length=500)
-    price = models.DecimalField(max_digits=None, decimal_places=2)
+    price = models.DecimalField(max_digits=20, decimal_places=2)
 
 class Orders_Products(models.Model):
     order_id = models.ForeignKey(Orders)
