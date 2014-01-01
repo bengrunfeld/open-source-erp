@@ -65,9 +65,20 @@ USE_TZ = True
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite')
-}
+DATABASES['default'] =  dj_database_url.config()
+
+# For future use 
+# DATABASES = {
+#     'default': {
+#         'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE', 'sqlite3'),
+#         'NAME': os.environ.get('DJ_NAME'),
+#         'USER': os.environ.get('DJ_USER'),
+#         'PASSWORD': os.environ.get('DJ_PASS'),
+#         'HOST': os.environ.get('DJ_HOST'),
+#         'PORT': os.environ.get('DJ_PORT'),
+#     }
+# }
+
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
