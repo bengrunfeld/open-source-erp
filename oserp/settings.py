@@ -10,6 +10,11 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+import psycopg2
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -58,10 +63,15 @@ WSGI_APPLICATION = 'oserp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE', 'sqlite3'),
+        'NAME': os.environ.get('DJ_NAME'),
+        'USER': os.environ.get('DJ_USER'),
+        'PASSWORD': os.environ.get('DJ_PASS'),
+        'HOST': os.environ.get('DJ_HOST'),
+        'PORT': os.environ.get('DJ_PORT'),
     }
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
