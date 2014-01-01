@@ -56,12 +56,22 @@ WSGI_APPLICATION = 'oserp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+import psycopg2
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE'),
+        'NAME': os.environ.get('DJ_NAME'),
+        'USER': os.environ.get('DJ_USER'),
+        'PASSWORD': os.environ.get('DJ_PASS'),
+        'HOST': os.environ.get('DJ_HOST'),
+        'PORT': os.environ.get('DJ_PORT'),
     }
 }
+
+# DATABASES['default'] = dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
