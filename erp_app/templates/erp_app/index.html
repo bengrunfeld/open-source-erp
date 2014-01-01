@@ -3,7 +3,10 @@
 <title>OSERP - Open Source ERP</title>
 </head>
 <body>
-<h1>Hello, World!</h1>
+{% for c in customer_info %}
+<h1>{{c.company}}</h1>
+<p>{{c.first_name}}  {{c.last_name}}<p/>
+{% endfor %}
 </body>
 </html>
 
