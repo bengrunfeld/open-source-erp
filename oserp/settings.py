@@ -65,6 +65,10 @@ USE_TZ = True
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
+
+# This is the only line of code Heroku will accept from now on.
+# If you want to change this code, then you have to destroy the app
+# and create a new one with `heroku create`
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite')
 }
