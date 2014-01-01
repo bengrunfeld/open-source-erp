@@ -60,7 +60,7 @@ WSGI_APPLICATION = 'oserp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = []
+DATABASES = ''
 DATABASES['default'] =  dj_database_url.config()
 
 # DATABASES = {
