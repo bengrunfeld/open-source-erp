@@ -42,7 +42,7 @@ OSERP relies on the following technologies:
 ## License and Authors
 
 * author:: Benjamin Grunfeld @bengrunfeld
-* contributor:: Darren Frenkel @Duebi
+* contributor:: Darren Frenkel darrenfrenkel@gmail.com
 
 Copyright 2013, Benjamin Grunfeld
 
