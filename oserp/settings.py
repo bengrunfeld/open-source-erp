@@ -62,6 +62,10 @@ import dj_database_url
 import psycopg2
 
 DATABASES = {
+    'default': dj_database_url.config(default='sqlite:///db.sqlite')
+}
+
+DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE', 'sqlite3'),
         'NAME': os.environ.get('DJ_NAME'),
