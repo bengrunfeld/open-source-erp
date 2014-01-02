@@ -63,7 +63,7 @@ import psycopg2
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE'),
+        'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE', 'sqlite3'),
         'NAME': os.environ.get('DJ_NAME'),
         'USER': os.environ.get('DJ_USER'),
         'PASSWORD': os.environ.get('DJ_PASS'),
@@ -71,8 +71,6 @@ DATABASES = {
         'PORT': os.environ.get('DJ_PORT'),
     }
 }
-
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
