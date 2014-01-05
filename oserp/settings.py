@@ -24,9 +24,6 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -53,32 +50,6 @@ ROOT_URLCONF = 'oserp.urls'
 
 WSGI_APPLICATION = 'oserp.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-import psycopg2
-
-DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite')
-}
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE', 'sqlite3'),
-#       'NAME': os.environ.get('DJ_NAME'),
-#        'USER': os.environ.get('DJ_USER'),
-#        'PASSWORD': os.environ.get('DJ_PASS'),
-#        'HOST': os.environ.get('DJ_HOST'),
-#        'PORT': os.environ.get('DJ_PORT'),
-#    }
-#}
-
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -92,10 +63,39 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+# If you want to use a different line here after 
+# you've performed `heroku create`, then you need
+# to destroy the app and create a new one with `heroku create`
+# That is the only way it will sync up with the DB
+DATABASES = {
+    'default': dj_database_url.config(default='sqlite:///db.sqlite')
+}
 
+# For future use 
+# DATABASES = {
+#     'default': {
+#         'ENGINE':'django.db.backends.' + os.environ.get('DJ_ENGINE', 'sqlite3'),
+#         'NAME': os.environ.get('DJ_NAME'),
+#         'USER': os.environ.get('DJ_USER'),
+#         'PASSWORD': os.environ.get('DJ_PASS'),
+#         'HOST': os.environ.get('DJ_HOST'),
+#         'PORT': os.environ.get('DJ_PORT'),
+#     }
+# }
+
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
