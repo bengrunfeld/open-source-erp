@@ -1,0 +1,27 @@
+/* This is the smallest width Chrome can be reduced to on a Mac */
+@media (min-width: 320px) {
+	.container {
+		width: 1170px !important;
+	}
+}
+
+/*
+Storing these values for later use with responsive design
+
+@media (min-width: 768px) {
+	.container {
+		width: 1170px !important;
+	}
+}
+
+@media (min-width: 992px) {
+	.container {
+		width: 1170px !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.container {
+		width: 1170px !important;
+	}
+}*/
