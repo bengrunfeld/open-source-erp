@@ -38,6 +38,7 @@ OSERP relies on the following technologies:
 * PyUnit
 * Pexpect
 * Selenium
+* Twitter Bootstrap
 
 ## License and Authors
 
