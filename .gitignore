@@ -3,3 +3,4 @@
 *.sqlite3
 staticfiles
 venv
+erp_app/static/erp_app/ai/
