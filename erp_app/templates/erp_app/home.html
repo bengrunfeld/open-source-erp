@@ -11,9 +11,9 @@
         <meta name="keywords" content="erp, open source erp, open-source erp, enterprise class">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/style.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/bootstrap.min.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/fixed-width.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/style.css' %}" />
 
     </head>
     <body>
@@ -21,26 +21,28 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-	<div class="container main">
+	<div class="container">
 		<div class="row">
 			<nav class="col-xs-2">
-				<a href="/"><div class="logo"></div><span class="logo-title">OSERP</span></a>
-				<a><span class="glyphicon glyphicon-home white"></span> Home</a>
-				<a><span class="glyphicon glyphicon-user white"></span> Customers</a>
-				<a><span class="glyphicon glyphicon-shopping-cart white"></span> Orders</a>
-				<a><span class="glyphicon glyphicon-th-list white"></span> Invoices</a>
-				<a><span class="glyphicon glyphicon-tag white"></span> Products</a>
-				<a><span class="glyphicon glyphicon-inbox white"></span> Suppliers</a>
-				<a><span class="glyphicon glyphicon-phone white"></span> Employees</a>
-				<a><span class="glyphicon glyphicon-download-alt white"></span> Expenses</a>
-				<a><span class="glyphicon glyphicon-align-left white"></span> Reports</a>
-				<a><span class="glyphicon glyphicon-book white"></span> Taxes</a>
+				<a href="/"><img class="logo" src="{% static 'erp_app/img/logo.png' %}"><span class="logo-title">OSERP</span></a>
+				<a><span class="glyphicon glyphicon-home white"></span><span class="nav-item">Home</span></a>
+				<a><span class="glyphicon glyphicon-user white"></span><span class="nav-item">Customers</span></a>
+				<a><span class="glyphicon glyphicon-shopping-cart white"></span><span class="nav-item">Orders</span></a>
+				<a><span class="glyphicon glyphicon-th-list white"></span><span class="nav-item">Invoices</span></a>
+				<a><span class="glyphicon glyphicon-tag white"></span><span class="nav-item">Products</span></a>
+				<a><span class="glyphicon glyphicon-inbox white"></span><span class="nav-item">Suppliers</span></a>
+				<a><span class="glyphicon glyphicon-phone white"></span><span class="nav-item">Employees</span></a>
+				<a><span class="glyphicon glyphicon-download-alt white"></span><span class="nav-item">Expenses</span></a>
+				<a><span class="glyphicon glyphicon-align-left white"></span><span class="nav-item">Reports</span></a>
+				<a><span class="glyphicon glyphicon-book white"></span><span class="nav-item">Taxes</span></a>
 			</nav>
 			
-			<section class="col-xs-7">
+			<section class="col-xs-7 main">
+				<div class="main-content"></div>
 			</section>		
 	
-			<aside class="col-xs-3">
+			<aside class="col-xs-3 sidebar">
+				<div class="sb-content"></div>
 			</aside>
 
 		</div>

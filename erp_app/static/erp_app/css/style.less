@@ -1,29 +1,45 @@
 @navbar: #1F3093;
 @nav-text: #FFFFFF;
+@highlighted_nav: #3F60BC; 
 
 nav {
+	padding:0 !important;
 	background:@navbar;
 	color: @nav-text;
+	min-height: 705px !important;
 
 	a {
 		display:block;
 		color: @nav-text;
 		font-family: Helvetica Neue, Helvetica;
-		font-size: 18px;
+		font-size: 16px;
+		letter-spacing: 0.7px;
 		text-decoration:none;
+		font-weight: 200;
+		padding:15px 15px;
+
+		&:hover {
+			text-decoration: none;
+			color: @nav-text;
+			background: @highlighted_nav; 
+
+			&:first-of-type {
+				background: @navbar; 				
+			}
+		}
+
+	}
+
+	.logo {
+		display:inline-block;
+		margin:-10px 0 0 -3px;
 	}
 
 	.logo-title {
 		font-family: Helvetica Neue, Helvetica;
 		font-size: 26px;
-	}
-
-	.logo {
-		background: url(/static/erp_app/img/logo.png);
-		display:inline-block;
-		width: 33px;
-		height: 32px;
-		margin-top:
+		margin-left: 12px;
+		letter-spacing: 2px;
 	}
 
 	.white {
@@ -31,5 +47,15 @@ nav {
 		font-size: 24px;
 	}
 
-	
+	.nav-item {
+		display:inline-block;
+		margin-left:20px;
+		position:relative;
+		top:-4px;
+	}
+}
+
+.main-content, .sb-content {
+	min-height:705px !important;
+	background: #3e3e3e;
 }
