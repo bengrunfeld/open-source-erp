@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="OSERP is an enterprise-class Open-Source ERP that is inspired by Quickbooks.">
+        <meta name="keywords" content="erp, open source erp, open-source erp, enterprise class">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/fixed-width.css' %}" />
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+	<div class="container main">
+		<div class="row">
+			<nav class="col-xs-2">
+				<a href="/"><div class="logo">OSERP</div></a>
+				<a><span class="glyphicon glyphicon-home white"></span> Home</a>
+				<a><span class="glyphicon glyphicon-user white"></span> Customers</a>
+				<a><span class="glyphicon glyphicon-shopping-cart white"></span> Orders</a>
+				<a><span class="glyphicon glyphicon-th-list white"></span> Invoices</a>
+				<a><span class="glyphicon glyphicon-tag white"></span> Products</a>
+				<a><span class="glyphicon glyphicon-inbox white"></span> Suppliers</a>
+				<a><span class="glyphicon glyphicon-phone white"></span> Employees</a>
+				<a><span class="glyphicon glyphicon-download-alt white"></span> Expenses</a>
+				<a><span class="glyphicon glyphicon-align-left white"></span> Reports</a>
+				<a><span class="glyphicon glyphicon-book white"></span> Taxes</a>
+			</nav>
+			
+			<section class="col-xs-7">
+			</section>		
+	
+			<aside class="col-xs-3">
+			</aside>
+
+		</div>
+	</div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="{% static 'erp_app/main.js' %}"></script>
+    </body>
+</html>
