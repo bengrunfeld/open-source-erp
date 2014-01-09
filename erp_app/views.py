@@ -5,7 +5,7 @@ import datetime
 import time
 from django import forms
 
-def home(request):
+def index(request):
     """View for the Homepage"""    
     template = 'erp_app/home.html'
     return render(request, template)

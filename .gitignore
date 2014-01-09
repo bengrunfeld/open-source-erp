@@ -1,6 +1,7 @@
 .DS_Store
 *.pyc
 *.sqlite3
+*.swp
 staticfiles
 venv
 erp_app/static/erp_app/ai/
