@@ -1,30 +1,44 @@
 @navbar: #1F3093;
 @nav-text: #FFFFFF;
 @highlighted_nav: #3F60BC; 
+@table: #EBF3FF;
+@table-header: #3F60BC;
+@sidebar:#AFAFAF;
+
+body {
+	padding-bottom:50px;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, ul, li {
+	font-family:Helvetica Neue, Helvetica !important;
+}
+
+a:hover {
+	cursor:pointer !important;
+}
 
 nav {
 	padding:0 !important;
 	background:@navbar;
-	color: @nav-text;
-	min-height: 705px !important;
+	color:@nav-text;
+	height:773px !important;
 
 	a {
 		display:block;
-		color: @nav-text;
-		font-family: Helvetica Neue, Helvetica;
-		font-size: 16px;
-		letter-spacing: 0.7px;
+		color:@nav-text;
+		font-size:16px;
+		letter-spacing:0.7px;
 		text-decoration:none;
-		font-weight: 200;
-		padding:15px 15px;
+		font-weight:200;
+		padding:15px;
 
 		&:hover {
-			text-decoration: none;
-			color: @nav-text;
-			background: @highlighted_nav; 
+			text-decoration:none;
+			color:@nav-text;
+			background:@highlighted_nav; 
 
 			&:first-of-type {
-				background: @navbar; 				
+				background:@navbar; 				
 			}
 		}
 
@@ -36,15 +50,15 @@ nav {
 	}
 
 	.logo-title {
-		font-family: Helvetica Neue, Helvetica;
-		font-size: 26px;
-		margin-left: 12px;
-		letter-spacing: 2px;
+		font-family:Helvetica Neue, Helvetica;
+		font-size:26px;
+		margin-left:12px;
+		letter-spacing:2px;
 	}
 
 	.white {
 		color: @nav-text;
-		font-size: 24px;
+		font-size:24px;
 	}
 
 	.nav-item {
@@ -55,7 +69,99 @@ nav {
 	}
 }
 
-.main-content, .sb-content {
+/*.main-content, .sb-content {
 	min-height:705px !important;
-	background: #3e3e3e;
+	background:#3e3e3e;
+}*/
+
+
+.main-content {
+
+	.settings {
+		font-size:24px;
+		float:left;
+		margin-top:25px;
+		margin-left:382px;
+		/*position:fixed;*/
+	}
+
+	.main-title {
+		float:left;
+		font-size:18px;
+		color:@navbar;
+
+		&.first {margin:25px 0 0 0;}
+		&.second {margin:70px 0 25px 0;}
+	}
+
+	.learn-oserp {
+		margin-top:50px;
+	}
+
+	.box {
+		width:150px;
+		height:45px;
+		font-size:18px;
+		color:#FFFFFF;
+		font-weight:200;
+		letter-spacing:0.7px;
+
+		span {
+			position:relative;
+			top:10px;
+			width:150px;
+			display:inline-block;
+			text-align:center;
+		}
+	
+		&.learn-customers {
+			background:#473110;
+			float:left;
+		}
+		&.learn-orders {
+			background:#7F1227;
+			float:left;
+			margin-left:50px;
+		}
+		&.learn-expenses {
+			background:#0E6618;
+			float:left;
+			margin-left:50px;
+		}
+	}
+
+	table {
+		width:650px;
+		height:200px;
+		background:@table;
+
+		tr:first-of-type {
+			background:@table-header;
+			height:30px;
+
+			th {
+				font-family:Helvetica Neue, Helvetica !important;
+				color:#FFFFFF;
+				font-size:12px;
+				font-weight:200;
+
+				&:first-of-type{padding-left:10px;}
+			}
+		}
+
+	}
+}
+
+.sidebar {
+	background:@sidebar;
+
+	.sb-content {
+
+	height:722px;
+
+		h3 {
+			color:white;
+			margin-top:50px;
+		}
+	}
 }
