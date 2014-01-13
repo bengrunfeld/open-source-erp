@@ -23,7 +23,16 @@ class Customers(models.Model):
     # shipping_zip = models.CharField(max_length=10)
     # shipping_country = models.CharField(max_length=200)   
     # other_details = models.CharField(max_length=500)
+    def __unicode__(self):  
+        return self.first_name + " "  + self.last_name 
 
+class Products(models.Model):
+    name = models.CharField(max_length=500) 
+    description = models.CharField(max_length=500)
+    price = models.DecimalField(max_digits=20, decimal_places=2)
+
+    def __unicode__(self):  
+        return self.name
 
 class Orders(models.Model):
     cust_id = models.ForeignKey(Customers)
@@ -31,17 +40,17 @@ class Orders(models.Model):
     delivery_due_date = models.DateTimeField('Delivery Due Date')
     payment_due_date = models.DateTimeField('Payment Due Date') 
     custom_message = models.TextField()
-
-class Products(models.Model):
-    name = models.CharField(max_length=500) 
-    description = models.CharField(max_length=500)
-    price = models.DecimalField(max_digits=20, decimal_places=2)
-
+    purchases = models.ManyToManyField(Products, through='Orders_Products')
+  
 class Orders_Products(models.Model):
     order_id = models.ForeignKey(Orders)
     product_id = models.ForeignKey(Products)
     quantity = models.IntegerField(default=0)
 
+    def cost(self):
+        costs = self.quantity * self.product_id.price
+        return costs
+           
 class General_Settings(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
@@ -50,3 +59,12 @@ class General_Settings(models.Model):
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=2)
     zip_code = models.CharField(max_length=10)
+
+class Expenses(models.Model):
+    expense_name = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
+    date_paid = models.DateTimeField('Expenses Paid Date')
+    amount_paid = models.DecimalField(max_digits=20, decimal_places=2)
+
+    def __unicode__(self):  
+        return self.expense_name    

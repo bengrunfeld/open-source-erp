@@ -57,30 +57,31 @@
 							<th>Amount Due</th>
 						</tr>
 						<tr>
-<!-- 						{% for order in list_of_orders %}
-			                    <td>{{ order.cust_id}}</td>
-			                    <td>{{ order.cust_id}}</td>
-			                    <td>{{ order.cust_id}}</td>
-			                    <td>{{ order.cust_id}}</td>
-			                {% endfor %} -->
+					<!--	{% for order in lisf_of_orders %}
+			                    <td>{{ order.cust_id }}</td>
+			                    <td><{{ order.cust_id }}/td>
+			                    <td>{{ order.cust_id }}</td>
+			                    <td><{{ order.cust_id }}/td>
+					{% endfor %} -->	
 						</tr>
 					</table>
 
 					<h2 class="main-title second">RECENT EXPENSES</h2>
 					<table class="orders">
+						
 						<tr>
 							<th>Expense Name</th>
 							<th>Description</th>
 							<th>Date Paid</th>
 							<th>Amount Paid</th>
 						</tr>
-						<tr>
-<!-- 						{% for order in list_of_orders %}
-			                    <td>{{ order.cust_id}}</td>
-			                    <td>{{ order.cust_id}}</td>
-			                    <td>{{ order.cust_id}}</td>
-			                    <td>{{ order.cust_id}}</td>
-			                {% endfor %} -->
+						{% for e in expenses_info %}
+						<tr>			
+			                   		 <td>{{ e.expense_name}}</td>
+			                   		 <td>{{ e.description}}</td>
+			                   		 <td>{{ e.date_paid}}</td>
+			                   		 <td>${{ e.amount_paid}}</td>
+			                {% endfor %}
 						</tr>
 					</table>
 				</div>
