@@ -9,7 +9,7 @@ from django.template import RequestContext, loader
 
 from erp_app.models import Orders
 
-def home(request):
+def index(request):
 	"""View for the Homepage including list of Orders and Expenses""" 
 	template = 'erp_app/home.html'
         expenses_info = Expenses.objects.all()
