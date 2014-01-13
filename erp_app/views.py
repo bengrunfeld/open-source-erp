@@ -42,3 +42,6 @@ def reports(request):
 
 def taxes(request):
 	pass	
+
+def settings(request):
+	pass	

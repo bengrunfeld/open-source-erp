@@ -1,6 +1,7 @@
 .DS_Store
 *.pyc
 *.sqlite3
+*.sqlite
 *.swp
 staticfiles
 venv
