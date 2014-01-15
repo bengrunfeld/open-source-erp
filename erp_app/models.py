@@ -28,6 +28,7 @@ class Customers(models.Model):
 class Orders(models.Model):
     cust_id = models.ForeignKey(Customers)
     invoice_creation_date = models.DateTimeField('Invoice Created Date')
+    invoice_number = models.CharField(max_length)
     delivery_due_date = models.DateTimeField('Delivery Due Date')
     payment_due_date = models.DateTimeField('Payment Due Date') 
     custom_message = models.TextField()
