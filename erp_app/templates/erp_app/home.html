@@ -56,13 +56,15 @@
 							<th>Delivery Due Date</th>
 							<th>Amount Due</th>
 						</tr>
+						{% for s in orders_info %}
+					<!--	{% for t in o.total %}	-->
 						<tr>
-					<!--	{% for order in lisf_of_orders %}
-			                    <td>{{ order.cust_id }}</td>
-			                    <td><{{ order.cust_id }}/td>
-			                    <td>{{ order.cust_id }}</td>
-			                    <td><{{ order.cust_id }}/td>
-					{% endfor %} -->	
+			                    <td>{{ s.cust_id }}</td>
+			                    <td>{{ s.invoice_number }}</td> 
+			                    <td>{{ s.delivery_due_date }}</td>
+			                  <!--  <td>${{ t }}</td>
+					{% endfor %} --> 
+					{% endfor %}	
 						</tr>
 					</table>
 
