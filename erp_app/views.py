@@ -9,11 +9,21 @@ from django.template import RequestContext, loader
 
 from erp_app.models import Orders
 
-def home(request):
+def index(request):
 	"""View for the Homepage including list of Orders and Expenses""" 
 	template = 'erp_app/home.html'
         expenses_info = Expenses.objects.all()
-        context = RequestContext(request, {'expenses_info': expenses_info})
+        orders_info = Orders.objects.all()
+#        costs = []
+#        grand_total = []
+#        for o in orders_info:
+#           for op in o.orders_products_set.all():
+#                  costs.append(op.cost())
+#            total = sum(costs)
+#            grand_total.append(total)
+#            costs = []
+#        o.total = grand_total
+        context = RequestContext(request, {'expenses_info': expenses_info, 'orders_info': orders_info})
 	return render(request, template, context)
 
 def customers(request):
