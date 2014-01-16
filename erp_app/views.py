@@ -48,7 +48,18 @@ def employees(request):
 	pass	
 
 def expenses(request):
-	pass	
+    """Displays list of Expenses to Expenses template""" 
+    list_of_expenses = Expenses.objects.all()[:5]
+
+    empty_expenses = False
+
+    if len(list_of_expenses) == 0:
+        empty_expenses = True
+
+    template = 'erp_app/expenses.html'
+    context = RequestContext(request, {'list_of_expenses': list_of_expenses, 
+    'empty_expenses': empty_expenses})
+    return render(request, template, context)
 
 def reports(request):
 	pass	

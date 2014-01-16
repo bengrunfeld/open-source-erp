@@ -37,47 +37,46 @@
 				<a><span class="glyphicon glyphicon-book white"></span><span class="nav-item">Taxes</span></a>
 			</nav>
 			
-			<section class="col-xs-7 main">
-				<div class="main-content">
-					<h2 class="main-title first">LEARN HOW TO USE OSERP</h2>
-					<div class="glyphicon glyphicon-cog settings"></div>
-					<div style="clear:both;"></div>
-					<div class="learn-oserp">
-						<a><div class="box learn-customers"><span>CUSTOMERS</span></div></a>
-						<a><div class="box learn-orders"><span>ORDERS</span></div></a>
-						<a><div class="box learn-expenses"><span>EXPENSES</span></div></a>
-						<div style="clear:both;"></div>
-					</div>
-					<h2 class="main-title second">RECENT ORDERS</h2>
-					<table class="table_hp_orders">
-						<tr>
-							<th>Customer</th>
-							<th>Invoice Number</th>
-							<th>Delivery Due Date</th>
-							<th>Amount Due</th>
-						</tr>
-					{% if empty_orders == False %}	
-						{% for order in list_of_orders %}
-						<tr>
-		                    <td>{{ order.order.customer.company }}</td>
-		                    <td>{{ order.order.invoice_number }}</td>
-		                    <td>{{ order.order.delivery_due_date }}</td>
-		                    <td>{{ order.product.price }}</td>
-						</tr>
-						{% endfor %}
-					{% else %}
-						<tr>
-		                    <td> </td>
-		                    <td> </td>
-		                    <td> </td>
-		                    <td> </td>
-						</tr>
-					{% endif %}
-					</table>
+            <section class="col-xs-10 main">
+                <div class="main-content">
+                    
+                    <h2 class="main-title first">LEARN HOW TO USE OSERP</h2>
+                    
+                    <div class="glyphicon glyphicon-cog settings"></div>
+                    <div style="clear:both;"></div>
+                    <div class="learn-oserp">
+                        <a><div class="box learn-customers"><span>CUSTOMERS</span></div></a>
+                        <a><div class="box learn-orders"><span>ORDERS</span></div></a>
+                        <a><div class="box learn-expenses"><span>EXPENSES</span></div></a>
+                        <div style="clear:both;"></div>
+                    </div>
 
-					<h2 class="main-title second">RECENT EXPENSES</h2>
-					
-					<table class="table_hp_orders">
+                    <div>
+    					<h2 class="page-title pull-left second">RECENT EXPENSES</h2>
+                        <a class="pull-right" data-toggle="modal" data-target="#expenses_modal"><span class="glyphicon glyphicon-plus white new"></span></a>
+    					<div style="clear:both"></div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="expenses_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                    <table class="table_expenses">
 						<tr>
 							<th>Expense Name</th>
 							<th>Description</th>
@@ -104,12 +103,6 @@
 					</table>
 				</div>
 			</section>		
-	
-			<aside class="col-xs-3 sidebar">
-				<div class="sb-content">
-					<h3>Advertising, interesting information (e.g. markets) and extra options will go here</h3>
-				</div>
-			</aside>
 
 		</div>
 	</div>

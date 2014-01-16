@@ -56,17 +56,31 @@ nav {
 		letter-spacing:2px;
 	}
 
-	.white {
-		color: @nav-text;
-		font-size:24px;
-	}
-
 	.nav-item {
 		display:inline-block;
 		margin-left:20px;
 		position:relative;
 		top:-4px;
 	}
+}
+
+.white {
+	color: @nav-text !important;
+	font-size:24px;
+}
+
+.new {
+	margin-top:55px;
+	padding:10px 32px 10px 10px;
+	background:@navbar;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	float:right;
+}
+
+.float-left {
+	float:left;
 }
 
 /*.main-content, .sb-content {
@@ -87,6 +101,14 @@ nav {
 
 	.main-title {
 		float:left;
+		font-size:18px;
+		color:@navbar;
+
+		&.first {margin:25px 0 0 0;}
+		&.second {margin:70px 0 25px 0;}
+	}
+
+	.page-title {
 		font-size:18px;
 		color:@navbar;
 
@@ -130,7 +152,7 @@ nav {
 		}
 	}
 
-	table {
+	table.table_hp_orders {
 		width:650px;
 		height:200px;
 		background:@table;
@@ -149,6 +171,26 @@ nav {
 			}
 		}
 
+	}
+
+	table.table_expenses {
+		width:945px;
+		height:200px;
+		background:@table;
+
+		tr:first-of-type {
+			background:@table-header;
+			height:30px;
+
+			th {
+				font-family:Helvetica Neue, Helvetica !important;
+				color:#FFFFFF;
+				font-size:12px;
+				font-weight:200;
+
+				&:first-of-type{padding-left:10px;}
+			}
+		}
 	}
 }
 
