@@ -10,11 +10,24 @@ from django.template import RequestContext, loader
 from erp_app.models import * 
 
 def home(request):
-	"""View for the Homepage including list of Orders and Expenses""" 
-	template = 'erp_app/home.html'
-        expenses_info = Expenses.objects.all()
-        context = RequestContext(request, {'expenses_info': expenses_info})
-	return render(request, template, context)
+    """View for the Homepage including list of Orders and Expenses""" 
+    list_of_orders = Orders_Products.objects.select_related()
+    list_of_expenses = Expenses.objects.all()[:5]
+
+    empty_orders = False 
+    empty_expenses = False
+
+    if len(list_of_orders) == 0:
+        empty_orders = True
+
+    if len(list_of_expenses) == 0:
+        empty_expenses = True
+
+    template = 'erp_app/home.html'
+    context = RequestContext(request, {'list_of_expenses': list_of_expenses, 
+    'list_of_orders': list_of_orders, 'empty_orders': empty_orders,
+    'empty_expenses': empty_expenses})
+    return render(request, template, context)
 
 def customers(request):
 	pass
@@ -73,7 +86,7 @@ def filldb(request):
     c.save()                                                                    
     cust = Customers.objects.get(pk=1)                                          
                                                                                 
-    o = Orders(cust_id=cust, invoice_creation_date=t, delivery_due_date=t,      
+    o = Orders(cust_id=cust, invoice_number=1, invoice_creation_date=t, delivery_due_date=t,      
         payment_due_date=t, custom_message="Place in the back entrance")        
     o.save()                                                                    
     order = Orders.objects.get(pk=1)                                            
@@ -93,8 +106,8 @@ def filldb(request):
 
     c = Customers(title='Miss', first_name='Heather', middle_name="Peri",       
         last_name="Middleton", suffix="", email="middleton@castle.com",         
-        company="Winstons", display_name="Middleton",                           
-        print_on_check_as="Winstons", billing_street="520 Terracotta Ave",      
+        company="Middleton's", display_name="Middleton's",                           
+        print_on_check_as="Middleton's", billing_street="520 Terracotta Ave",      
         billing_city="England", billing_state="UK", billing_zip="73329",        
         billing_country="UK", shipping_street="520 Terracotta Ave",             
         shipping_city="England", shipping_state="UK", shipping_zip="73329",     
@@ -102,7 +115,7 @@ def filldb(request):
     c.save()
     cust = Customers.objects.get(pk=2)
 
-    o = Orders(cust_id=cust, invoice_creation_date=t, delivery_due_date=t,       
+    o = Orders(cust_id=cust, invoice_number=2, invoice_creation_date=t, delivery_due_date=t,       
         payment_due_date=t, custom_message="Give the cheese to Sam")            
     o.save()
     order = Orders.objects.get(pk=2)
@@ -121,18 +134,18 @@ def filldb(request):
     p.save()
     product = Products.objects.get(pk=3)
 
-    c = Customers(title='Miss', first_name='Heather', middle_name="Peri",       
-        last_name="Middleton", suffix="", email="middleton@castle.com",         
-        company="Winstons", display_name="Middleton",                           
-        print_on_check_as="Winstons", billing_street="520 Terracotta Ave",      
-        billing_city="England", billing_state="UK", billing_zip="73329",        
-        billing_country="UK", shipping_street="520 Terracotta Ave",             
-        shipping_city="England", shipping_state="UK", shipping_zip="73329",     
-        shipping_country="UK", other_details="possibly royalty")
+    c = Customers(title='Mr', first_name='Herbert', middle_name="",       
+        last_name="Shrute", suffix="", email="shrute@beets.com",         
+        company="Shrute's Beets", display_name="Shrute's Beets",                           
+        print_on_check_as="Shrute's Beets", billing_street="1100 Farm Lane",      
+        billing_city="Louiseville", billing_state="CO", billing_zip="80224",        
+        billing_country="USA", shipping_street="1100 Farm Lane",             
+        shipping_city="Louiseville", shipping_state="CO", shipping_zip="80224",     
+        shipping_country="USA", other_details="Eats too many beets")
     c.save()
     cust = Customers.objects.get(pk=3)
 
-    o = Orders(cust_id=cust, invoice_creation_date=t, delivery_due_date=t,       
+    o = Orders(cust_id=cust, invoice_number=3, invoice_creation_date=t, delivery_due_date=t,       
         payment_due_date=t, custom_message="Give the cheese to Sam")
     o.save()
     order = Orders.objects.get(pk=3)
@@ -160,7 +173,7 @@ def filldb(request):
     c.save()
     cust = Customers.objects.get(pk=4)
 
-    o = Orders(cust_id=cust, invoice_creation_date=t, delivery_due_date=t,       
+    o = Orders(cust_id=cust, invoice_number=4, invoice_creation_date=t, delivery_due_date=t,       
         payment_due_date=t, custom_message="Send Rubix Cubes to everyone")
     o.save()
     order = Orders.objects.get(pk=4)

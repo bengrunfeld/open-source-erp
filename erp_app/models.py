@@ -37,11 +37,12 @@ class Products(models.Model):
 
 class Orders(models.Model):
     cust_id = models.ForeignKey(Customers)
+    invoice_number = models.IntegerField()
     invoice_creation_date = models.DateTimeField('Invoice Created Date')
     delivery_due_date = models.DateTimeField('Delivery Due Date')
     payment_due_date = models.DateTimeField('Payment Due Date') 
     custom_message = models.TextField()
-    purchases = models.ManyToManyField(Products, through='Orders_Products')
+    # purchases = models.ManyToManyField(Products, through='Orders_Products')
   
 class Orders_Products(models.Model):
     order_id = models.ForeignKey(Orders)
