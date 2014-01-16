@@ -59,10 +59,10 @@
 					{% if empty_orders == False %}	
 						{% for order in list_of_orders %}
 						<tr>
-		                    <td>{{ order.order_id.cust_id.company }}</td>
-		                    <td>{{ order.order_id.invoice_number }}</td>
-		                    <td>{{ order.order_id.delivery_due_date }}</td>
-		                    <td>{{ order.product_id.price }}</td>
+		                    <td>{{ order.order.customer.company }}</td>
+		                    <td>{{ order.order.invoice_number }}</td>
+		                    <td>{{ order.order.delivery_due_date }}</td>
+		                    <td>{{ order.product.price }}</td>
 						</tr>
 						{% endfor %}
 					{% else %}

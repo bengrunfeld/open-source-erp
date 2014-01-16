@@ -84,14 +84,15 @@ def filldb(request):
         shipping_zip="30284", shipping_country="USA",                           
         other_details="cant be trusted")                                        
     c.save()                                                                    
-    cust = Customers.objects.get(pk=1)                                          
+    customer = Customers.objects.get(pk=1)                                          
                                                                                 
-    o = Orders(cust_id=cust, invoice_number=1, invoice_creation_date=t, delivery_due_date=t,      
-        payment_due_date=t, custom_message="Place in the back entrance")        
+    o = Orders(customer=customer, invoice_number=1, invoice_creation_date=t, 
+        delivery_due_date=t, payment_due_date=t, 
+        custom_message="Place in the back entrance")        
     o.save()                                                                    
     order = Orders.objects.get(pk=1)                                            
                                                                                 
-    op = Orders_Products(order_id=order, product_id=product, quantity=50)       
+    op = Orders_Products(order=order, product=product, quantity=50)       
     op.save()
 
     # Record set 2                                                                   
@@ -113,14 +114,14 @@ def filldb(request):
         shipping_city="England", shipping_state="UK", shipping_zip="73329",     
         shipping_country="UK", other_details="possibly royalty")                
     c.save()
-    cust = Customers.objects.get(pk=2)
+    customer = Customers.objects.get(pk=2)
 
-    o = Orders(cust_id=cust, invoice_number=2, invoice_creation_date=t, delivery_due_date=t,       
+    o = Orders(customer=customer, invoice_number=2, invoice_creation_date=t, delivery_due_date=t,       
         payment_due_date=t, custom_message="Give the cheese to Sam")            
     o.save()
     order = Orders.objects.get(pk=2)
 
-    op = Orders_Products(order_id=order, product_id=product, quantity="35") 
+    op = Orders_Products(order=order, product=product, quantity="35") 
     op.save()
 
 
@@ -143,14 +144,15 @@ def filldb(request):
         shipping_city="Louiseville", shipping_state="CO", shipping_zip="80224",     
         shipping_country="USA", other_details="Eats too many beets")
     c.save()
-    cust = Customers.objects.get(pk=3)
+    customer = Customers.objects.get(pk=3)
 
-    o = Orders(cust_id=cust, invoice_number=3, invoice_creation_date=t, delivery_due_date=t,       
-        payment_due_date=t, custom_message="Give the cheese to Sam")
+    o = Orders(customer=customer, invoice_number=3, invoice_creation_date=t, 
+        delivery_due_date=t, payment_due_date=t, 
+        custom_message="Give the cheese to Sam")
     o.save()
     order = Orders.objects.get(pk=3)
 
-    op = Orders_Products(order_id=order, product_id=product, quantity="35")
+    op = Orders_Products(order=order, product=product, quantity="35")
     op.save()
                                                                      
     # Record set 4                                                                            
@@ -169,16 +171,48 @@ def filldb(request):
         billing_city="Hoboken", billing_state="NY", billing_zip="54109",        
         billing_country="USA", shipping_street="12 Richy Lane",                 
         shipping_city="Hoboken", shipping_state="NY", shipping_zip="54109",     
-        shipping_country="USA", other_details="Extremely loyal to our brand. Don't know why")
+        shipping_country="USA", 
+        other_details="Extremely loyal to our brand. Don't know why")
     c.save()
-    cust = Customers.objects.get(pk=4)
+    customer = Customers.objects.get(pk=4)
 
-    o = Orders(cust_id=cust, invoice_number=4, invoice_creation_date=t, delivery_due_date=t,       
-        payment_due_date=t, custom_message="Send Rubix Cubes to everyone")
+    o = Orders(customer=customer, invoice_number=4, invoice_creation_date=t, 
+        delivery_due_date=t, payment_due_date=t, 
+        custom_message="Send Rubix Cubes to everyone")
     o.save()
     order = Orders.objects.get(pk=4)
     
-    op = Orders_Products(order_id=order, product_id=product, quantity="12")
+    op = Orders_Products(order=order, product=product, quantity="12")
+    op.save()
+
+    # Record set 5                                                                            
+    e = Expenses(expense_name='Exterminators', description='Pest Control',   
+        date_paid=t, amount_paid=1200.73)
+    e.save()
+
+    p = Products(name='Tissues', description='Snot paper', price=3.75)
+    p.save()
+    product = Products.objects.get(pk=5)
+
+    c = Customers(title='Mr', first_name='Harry', middle_name="",                
+        last_name="Houdini", suffix="", email="escape@thebox.com",             
+        company="Escapists", display_name="Escapists",                        
+        print_on_check_as="Escapists", billing_street="820 Shift Place",         
+        billing_city="London", billing_state="England", billing_zip="23949",        
+        billing_country="UK", shipping_street="820 Shift Place",                 
+        shipping_city="London", shipping_state="England", shipping_zip="23949",     
+        shipping_country="UK", 
+        other_details="Can escape out of any contract. Beware!")
+    c.save()
+    customer = Customers.objects.get(pk=5)
+
+    o = Orders(customer=customer, invoice_number=4, invoice_creation_date=t, 
+        delivery_due_date=t, payment_due_date=t, 
+        custom_message="Put him in a water-filled box to complete delivery")
+    o.save()
+    order = Orders.objects.get(pk=5)
+    
+    op = Orders_Products(order=order, product=product, quantity="12")
     op.save()
 
     template = 'erp_app/filldb.html'

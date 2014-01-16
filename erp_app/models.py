@@ -36,7 +36,7 @@ class Products(models.Model):
         return self.name
 
 class Orders(models.Model):
-    cust_id = models.ForeignKey(Customers)
+    customer = models.ForeignKey(Customers)
     invoice_number = models.IntegerField()
     invoice_creation_date = models.DateTimeField('Invoice Created Date')
     delivery_due_date = models.DateTimeField('Delivery Due Date')
@@ -45,8 +45,8 @@ class Orders(models.Model):
     # purchases = models.ManyToManyField(Products, through='Orders_Products')
   
 class Orders_Products(models.Model):
-    order_id = models.ForeignKey(Orders)
-    product_id = models.ForeignKey(Products)
+    order = models.ForeignKey(Orders)
+    product = models.ForeignKey(Products)
     quantity = models.IntegerField(default=0)
 
     def cost(self):
