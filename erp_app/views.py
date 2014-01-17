@@ -6,8 +6,10 @@ import time
 from django import forms
 from erp_app.models import Expenses
 from django.template import RequestContext, loader
+from django.contrib import messages
 
 from erp_app.models import * 
+from erp_app.forms import *
 
 def home(request):
     """View for the Homepage including list of Orders and Expenses""" 
@@ -49,17 +51,43 @@ def employees(request):
 
 def expenses(request):
     """Displays list of Expenses to Expenses template""" 
-    list_of_expenses = Expenses.objects.all()[:5]
+    list_of_expenses = Expenses.objects.all()
 
     empty_expenses = False
 
     if len(list_of_expenses) == 0:
         empty_expenses = True
 
+    form = ExpenseForm()
     template = 'erp_app/expenses.html'
     context = RequestContext(request, {'list_of_expenses': list_of_expenses, 
-    'empty_expenses': empty_expenses})
+    'empty_expenses': empty_expenses, 'form': form})
     return render(request, template, context)
+
+def expenses_update(request):
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST)
+    if form.is_valid():
+        expense_name = form.cleaned_data['name']
+        description = form.cleaned_data['description']
+        date_paid = form.cleaned_data['date_paid']
+        amount_paid = form.cleaned_data['amount_paid']
+        expense = Expenses(expense_name=expense_name, description=description, 
+        date_paid=date_paid, amount_paid=amount_paid)
+        expense.save()
+        return HttpResponseRedirect('/expenses/')
+    else:
+        list_of_expenses = Expenses.objects.all()                               
+        errors = form.errors
+        empty_expenses = False                                                      
+                                                                                 
+        if len(list_of_expenses) == 0:                                              
+            empty_expenses = True
+                                                        
+        template = 'erp_app/expenses.html'                                          
+        context = RequestContext(request, {'list_of_expenses': list_of_expenses,    
+        'empty_expenses': empty_expenses, 'form': form, 'errors': errors}) 
+        return render(request, template, context) 
 
 def reports(request):
 	pass	

@@ -13,6 +13,7 @@
         {% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/bootstrap.min.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/fixed-width.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/datepicker.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'erp_app/css/style.css' %}" />
 
     </head>
@@ -53,28 +54,57 @@
 
                     <div>
     					<h2 class="page-title pull-left second">RECENT EXPENSES</h2>
-                        <a class="pull-right" data-toggle="modal" data-target="#expenses_modal"><span class="glyphicon glyphicon-plus white new"></span></a>
+                        <a class="pull-right" data-toggle="modal" data-target="#expenses_modal"><span class="glyphicon glyphicon-plus white add-expense"></span></a>
     					<div style="clear:both"></div>
                     </div>
 
                     <!-- Modal -->
+                    <form action="/expenses-update/" method="post" class="expense-form" role="form">{% csrf_token %}
                     <div class="modal fade" id="expenses_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                          </div>
-                          <div class="modal-body">
-                            ...
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </div><!-- /.modal-content -->
-                      </div><!-- /.modal-dialog -->
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Add Expense</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="expenseName">Expense Name</label>
+                                        <input type="text" class="form-control" name="name" value="Expense Name">
+                                        <label for="expenseDescription">Expense Description</label>
+                                        <textarea name="description" class="form-control" rows="5" cols="30">Description of Expense</textarea>
+                                        <label for="expenseDatePaid">Date Paid</label>
+                                        <div class="row">
+                                            <div class="input-append date">
+                                                <div class="col-xs-3">
+                                                    <input type="text" name="date_paid" class="form-control">
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <span class="add-on btn btn-default btn-lg"><i class="icon-th glyphicon glyphicon-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label for="expenseAmountPaid">Amount Paid</label>
+                                        <input type="number" step="any" name="amount_paid" class="form-control" value="Amount Paid">
+                                    </div>
+                                 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary submit">Save changes</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
+                    </form>
+
+                    
+                    {% if errors %}
+                        {% for error in errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    
 
                     <table class="table_expenses">
 						<tr>
@@ -106,8 +136,17 @@
 
 		</div>
 	</div>
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="{% static 'erp_app/js/bootstrap.js' %}"></script>
+        <script src="{% static 'erp_app/js/bootstrap-datepicker.js' %}"></script>
+        <script>
+            $('.input-append.date').datepicker({
+                 todayBtn: "linked"
+            });
+
+            $('.submit').click(function(){
+                $('.expense-form').submit();
+            });
+        </script>
     </body>
 </html>

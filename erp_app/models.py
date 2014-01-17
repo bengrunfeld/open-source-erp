@@ -38,9 +38,9 @@ class Products(models.Model):
 class Orders(models.Model):
     customer = models.ForeignKey(Customers)
     invoice_number = models.IntegerField()
-    invoice_creation_date = models.DateTimeField('Invoice Created Date')
-    delivery_due_date = models.DateTimeField('Delivery Due Date')
-    payment_due_date = models.DateTimeField('Payment Due Date') 
+    invoice_creation_date = models.DateField('Invoice Created Date')
+    delivery_due_date = models.DateField('Delivery Due Date')
+    payment_due_date = models.DateField('Payment Due Date') 
     custom_message = models.TextField()
     # purchases = models.ManyToManyField(Products, through='Orders_Products')
   
@@ -65,7 +65,7 @@ class General_Settings(models.Model):
 class Expenses(models.Model):
     expense_name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
-    date_paid = models.DateTimeField('Expenses Paid Date')
+    date_paid = models.DateField('Expenses Paid Date')
     amount_paid = models.DecimalField(max_digits=20, decimal_places=2)
 
     def __unicode__(self):  
